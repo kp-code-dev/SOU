@@ -1,4 +1,4 @@
-# Silver Oak University Practicals
+# Silver Oak University Theory & Practicals
 
 This repository contains practical assignments, theoretical notes, and other educational materials for students at Silver Oak University. The content is organized systematically by academic year and semester.
 
