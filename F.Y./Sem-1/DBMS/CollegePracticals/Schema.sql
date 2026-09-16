@@ -332,3 +332,45 @@ SELECT LOWER('HELLO') AS Lowercase_Value FROM dual;
 Syntax: SELECT UPPER(column_name) FROM table_name;
 
 SELECT UPPER('hello') AS Uppercase_Value FROM dual;
+
+05/09/2026
+-- 3) INITCAP(): Converts the first letter of each word in a string to uppercase and the rest to lowercase.
+Syntax: SELECT INITCAP('') AS new_column_name FROM table_name; 
+
+SELECT INITCAP('hello world') AS Capitalized_Value FROM dual;
+
+-- 4) LENGTH(): Returns the length of a string.
+Syntax: SELECT LENGTH(column_name) FROM table_name;
+
+SELECT LENGTH('Hello World') AS String_Length FROM dual;
+
+-- 5) TRIM(): Removes leading and trailing spaces from a string.
+Syntax: SELECT TRIM(column_name) FROM table_name;
+
+SELECT TRIM('   Hello World   ') AS Trimmed_Value FROM dual;
+SELECT LTRIM('   Hello World   ') AS Left_Trimmed_Value FROM dual;
+SELECT RTRIM('   Hello World   ') AS Right_Trimmed_Value FROM dual;
+
+-- 6) TRANSLATE(): Replaces specific characters in a string with other characters.
+Syntax: SELECT TRANSLATE(column_name, 'from_chars', 'to_chars') FROM table_name;
+
+SELECT TRANSLATE('Hello World', 'HW', 'hw') AS Translated_Value FROM dual;
+
+-- Apply all String Functions on the column 'std_name' of the 'student' table.
+SELECT * FROM EMPLOYEE;
+SELECT emp_id,emp_name,INITCAP(emp_name) AS First_World_Capital FROM EMPLOYEE;
+SELECT emp_id,emp_name,LENGTH(emp_name) AS Total_Length_of_emp_name FROM EMPLOYEE;
+SELECT emp_id,emp_name,LTRIM(emp_name) AS Left_Side_Space FROM EMPLOYEE;
+SELECT emp_id,emp_name,RTRIM(emp_name) AS Right_Side_Space FROM EMPLOYEE;
+SELECT emp_id,emp_name,TRIM(emp_name) AS Remove_Both_Left_Right_Space FROM EMPLOYEE;
+SELECT emp_id,emp_name,TRANSLATE(emp_name, 'xyz') AS Result FROM EMPLOYEE;
+SELECT emp_id,emp_name,TRANSLATE(emp_name, emp_name, 'xyz') AS Result FROM EMPLOYEE;
+SELECT emp_id,emp_name,TRANSLATE(emp_name, 'XYZ', 'xyz') AS Result FROM EMPLOYEE;
+SELECT emp_id,emp_name,TRANSLATE(emp_name, 'XYZ', 'xyz') AS Result FROM EMPLOYEE WHERE emp_id=101;
+SELECT emp_id,emp_name,LOWER(emp_name) AS Emp_Name_Convert_Lower_Case FROM EMPLOYEE;
+SELECT emp_id,emp_name,UPPER(emp_name) AS Emp_Name_Convert_Upper_Case FROM EMPLOYEE;
+SELECT emp_id,emp_name,SUBSTRING(emp_name, 1, 3) AS Result FROM EMPLOYEE;
+SELECT emp_id,emp_name,hire_date,NEXT_DAY(hire_date, 'monday') AS Result FROM EMPLOYEE;
+SELECT emp_id,emp_name,hire_date,GREATEST(hire_date, '2022-01-01') AS Result FROM EMPLOYEE;
+SELECT emp_id,emp_name,hire_date,NEXT_DAY(hire_date, '2022-01-01') AS Result FROM EMPLOYEE;
+UPDATE EMPLOYEE SET hire_date = '17-03-2023' WHERE emp_id = 101;
