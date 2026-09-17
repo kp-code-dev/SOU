@@ -11,10 +11,10 @@ This repository contains practical assignments, theoretical notes, and other edu
 - **Computer Network (CAM5021C)**:
   - Study materials and syllabus documents.
 - **Core Java (CAM5001C)**:
-  - `CollegePracticals/`: Java source code (`.java`) and compiled classes (`.class`) for laboratory assignments. Includes programs like Armstrong, Factorial, loops, and inheritance.
+  - `CollegePracticals/`: Java source code (`.java`) and compiled classes (`.class`) for laboratory assignments. Includes programs like Armstrong, Factorial, loops, inheritance, String methods, and StringBuffer.
   - `Theory/`: Unit-wise presentations, lecture notes, syllabus PDF, and assignments.
 - **DBMS (Database Management System)**:
-  - `CollegePracticals/`: SQL schemas and database queries.
+  - `CollegePracticals/`: SQL schemas and database queries. Features practical implementations of SQL string functions, data aggregation (`GROUP BY`, `HAVING`, `ORDER BY`), and Set Operations (`UNION`, `INTERSECT`, `MINUS`).
   - `Theory/`: Unit-wise lecture presentations.
 - **Foundation of Mathematics**:
   - Unit-wise tutorials, lecture notes (Numerical Methods, Operations Research), assignments, and the MCA syllabus.

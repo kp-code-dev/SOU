@@ -31,11 +31,11 @@ DROP TABLE Student/(table_name);
 -- ALTER: Used to modify the structure of an existing table in the database.
 Syntax: ALTER TABLE table_name ADD column_name DATATYPE(SIZE);
 
-ALTER TABLE Student/(table_name) ADD email/(column_name) VARCHAR(50)/DATATYPE(SIZE);
+ALTER TABLE Student ADD email/(column_name) VARCHAR(50);
 
-ALTER TABLE Student/(table_name) MODIFY COLUMN email/(column_name) VARCHAR(100)/DATATYPE(SIZE);
+ALTER TABLE Student MODIFY COLUMN email VARCHAR(100);
 
-ALTER TABLE Student/(table_name) RENAME COLUMN email/(old_column_name) TO new_email/(new_column_name);
+ALTER TABLE Student RENAME COLUMN email TO new_email;
 
 05/08/2026
 -- step: 1: Create a table named STUDENTS with the following columns:
@@ -374,3 +374,85 @@ SELECT emp_id,emp_name,hire_date,NEXT_DAY(hire_date, 'monday') AS Result FROM EM
 SELECT emp_id,emp_name,hire_date,GREATEST(hire_date, '2022-01-01') AS Result FROM EMPLOYEE;
 SELECT emp_id,emp_name,hire_date,NEXT_DAY(hire_date, '2022-01-01') AS Result FROM EMPLOYEE;
 UPDATE EMPLOYEE SET hire_date = '17-03-2023' WHERE emp_id = 101;
+
+09/09/2026
+CREATE TABLE sales (
+    sales_id NUMBER PRIMARY KEY,
+    department VARCHAR(50) NOT NULL,
+    amount NUMBER(10) NOT NULL
+);
+
+INSERT INTO sales VALUES (101, 'Sales', 50000);
+INSERT INTO sales VALUES (102, 'HR', 30000);
+INSERT INTO sales VALUES (103, 'Sales', 45000);
+INSERT INTO sales VALUES (104, 'IT', 60000);
+INSERT INTO sales VALUES (105, 'HR', 35000);
+INSERT INTO sales VALUES (106, 'IT', 55000);
+
+SELECT * FROM sales;
+
+-- Group By: Used to group rows that have the same values in specified columns into summary rows.
+Syntax: SELECT column1, aggregate_function(column2) FROM table_name GROUP BY column1;
+
+SELECT department, SUM(amount) AS total_amount FROM sales GROUP BY department;
+
+-- Order By: Used to sort the result set in ascending or descending order based on one or more columns.
+Syntax: SELECT column1, column2 FROM table_name ORDER BY column1 ASC|DESC;
+
+SELECT department, SUM(amount) AS total_amount FROM sales GROUP BY department HAVING SUM(amount) > 70000;
+
+-- Order By: Used to sort the result set in ascending or descending order based on one or more columns.
+Syntax: SELECT column1, column2 FROM table_name ORDER BY column1 ASC|DESC;
+
+SELECT sales_id, department, amount FROM sales ORDER BY amount DESC;
+SELECT sales_id, department, amount FROM sales ORDER BY amount DESC;
+SELECT sales_id, department, amount FROM sales WHERE department = 'IT' ORDER BY amount DESC;
+
+16/09/2026
+CREATE TABLE student_a (
+    student_id NUMBER PRIMARY KEY,
+    student_name VARCHAR(30) NOT NULL,
+    course VARCHAR(20) NOT NULL,
+);
+
+INSERT INTO student_a VALUES (101, 'Rahul', 'BCA');
+INSERT INTO student_a VALUES (102, 'Priya', 'BCA');
+INSERT INTO student_b VALUES (103, 'Amit', 'BCA');
+INSERT INTO student_b VALUES (104, 'Neha', 'BCA');
+INSERT INTO student_b VALUES (105, 'Karan', 'BCA');
+
+SELECT * FROM student_a;
+
+CREATE TABLE student_b (
+    student_id NUMBER PRIMARY KEY,
+    student_name VARCHAR(30) NOT NULL,
+    course VARCHAR(20) NOT NULL,
+);
+
+INSERT INTO student_b VALUES (103, 'Amit', 'BCA');
+INSERT INTO student_b VALUES (104, 'Neha', 'BCA');
+INSERT INTO student_b VALUES (105, 'Karan', 'BCA');
+INSERT INTO student_b VALUES (106, 'Pooja', 'BCA');
+INSERT INTO student_b VALUES (107, 'Riya', 'BCA');
+
+SELECT * FROM student_b;
+
+-- Union: Used to combine the result sets of two or more SELECT statements into a single result set.
+Syntax: SELECT column1, column2 FROM table1 UNION SELECT column1, column2 FROM table2;
+
+SELECT * FROM student_a UNION SELECT * FROM student_b;
+
+-- Union All: Used to combine the result sets of two or more SELECT statements into a single result set, including duplicate rows.
+Syntax: SELECT column1, column2 FROM table1 UNION ALL SELECT column1, column2 FROM table2;
+
+SELECT * FROM student_a UNION ALL SELECT * FROM student_b;
+
+-- Intersection: Used to return the common rows from the result sets of two SELECT statements.
+Syntax: SELECT column1, column2 FROM table1 INTERSECT SELECT column1, column2 FROM table2;
+
+SELECT * FROM student_a INTERSECT SELECT * FROM student_b;
+
+-- Minus: Used to return the rows from the first SELECT statement that are not present in the second SELECT statement.
+Syntax: SELECT column1, column2 FROM table1 MINUS SELECT column1, column2 FROM table2;
+
+SELECT * FROM student_a MINUS SELECT * FROM student_b;
