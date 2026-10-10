@@ -456,3 +456,100 @@ SELECT * FROM student_a INTERSECT SELECT * FROM student_b;
 Syntax: SELECT column1, column2 FROM table1 MINUS SELECT column1, column2 FROM table2;
 
 SELECT * FROM student_a MINUS SELECT * FROM student_b;
+
+19/09/2026
+SELECT * FROM student_a;
+
+ALTER TABLE student_a DROP COLUMN course;
+
+ALTER TABLE student_a DROP ADD course_id NUMBER;
+
+DELETE FROM student_a WHERE student_id < 106;
+
+INSERT INTO student_a VALUES (101, 'Rahul', 1);
+INSERT INTO student_a VALUES (102, 'Priya', 2);
+INSERT INTO student_b VALUES (103, 'Amit', 3);
+INSERT INTO student_b VALUES (104, 'Neha', 4);
+INSERT INTO student_b VALUES (105, 'Karan', 5);
+
+CREATE TABLE student_b (
+    course_id NUMBER PRIMARY KEY,
+    course_name VARCHAR(30) NOT NULL
+);
+
+INSERT INTO student_a VALUES (1, 'BCA');
+INSERT INTO student_a VALUES (2, 'Msc IT');
+INSERT INTO student_b VALUES (3, 'MCA');
+
+SELECT * FROM course;
+
+-- INNER JOIN:
+SELECT student_a.student_id,student_a.student_name,course.course_name FROM student_a INNER JOIN course ON student_a.course_id = course.course_id;
+
+SELECT student_a.student_id,student_a.student_name,course.course_name FROM student_a INNER JOIN course ON student_a.course_id = course.course_id WHERE course.course_name='BCA';
+
+-- CROSS JOIN:
+SELECT student_a.student_id,course.course_name FROM student_a CROSS JOIN course;
+
+-- LEFT JOIN:
+SELECT student_a.student_id,course.course_name FROM student_a LEFT JOIN course ON student_a.course_id = course.course_id;
+
+-- RIGHT JOIN:
+SELECT student_a.student_id,course.course_name FROM student_a RIGHT JOIN course ON student_a.course_id = course.course_id;
+
+-- FULL JOIN:
+SELECT student_a.student_id,course.course_name FROM student_a FULL JOIN course ON student_a.course_id = course.course_id;
+
+23/09/2026
+-- FULL OUTER JOIN:
+Syntax: SELECT column1, column2 FROM table1 FULL OUTER JOIN table2 ON table1.colum_name=table2.column_name;
+
+30/09/2026
+-- PL/SQL
+-- 1. is Odd/Even
+DECLARE
+num NUNBER := 25;
+BEGIN
+IF MOD(num,2) = 0 THEN
+    DBMS_OUTPUT.PUT_LINE(num || ' is an Even Number');
+ELSE
+    DBMS_OUTPUT.PUT_LINE(num || ' is an Odd Number');
+END IF;
+END;
+/
+
+-- 2. is Voting for Eligible/Not
+DECLARE
+age NUMBER := 25;
+BEGIN
+IF (age > 18) THEN
+    DBMS_OUTPUT.PUT_LINE(age || ' is Voting for Eligible');
+ELSE
+    DBMS_OUTPUT.PUT_LINE(age || ' is Voting for not Eligible');
+END IF;
+END;
+/
+
+-- 3. Write a Program to check number is prime or not
+DECLARE
+num NUMBER;
+i NUMBER;
+flag NUMBER;
+BEGIN
+num := 17;
+i := 2;
+flag := 1;
+FOR i IN 2..num/2
+LOOP
+IF MOD(num,i)=0 THEN
+flag := 0;
+EXIT;
+END IF;
+END LOOP;
+IF flag = i THEN
+    DBMS_OUTPUT.PUT_LINE(num || ' is a Prime Number');
+ELSE
+    DBMS_OUTPUT.PUT_LINE(num || ' is Not a Prime Number');
+END IF;
+END;
+/
